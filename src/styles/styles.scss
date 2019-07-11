@@ -1,3 +1,33 @@
+* {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+// Styles for User Search Component
 .user-search {
-  background-color: red;
+  display: block;
+  text-align: center;
+}
+
+.user-search-input {
+  padding: 5px;
+}
+
+.user-search-button {
+  margin-left: 5px;
+  padding: 5px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.user-search-error {
+  color: #f00;
+  text-align: center;
+}
+
+.user-search-loading {
+  text-align: center;
 }

@@ -5,10 +5,10 @@ import { handleFetchUserAsync, getIfIsLoading, getError } from '../ducks/User';
 
 const UserSearch = ({ handleFetchUser, isLoading, error }) => {
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="user-search-loading">Loading...</div>;
   } else if (error) {
     return (
-      <div style={{ color: '#f00' }}>
+      <div className="user-search-error">
         <p>Oops, usuário não encontrado.</p>
       </div>
     );
@@ -21,8 +21,9 @@ const UserSearch = ({ handleFetchUser, isLoading, error }) => {
           name="username"
           type="text"
           placeholder="Type a Github username..."
+          className="user-search-input"
         />
-        <button type="submit" style={{ marginLeft: 5 }}>
+        <button type="submit" className="user-search-button">
           Fetch User
         </button>
       </form>
