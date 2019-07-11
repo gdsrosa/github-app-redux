@@ -6,7 +6,7 @@
   "scripts": {
     "webpack": "webpack",
     "webpack-dev-server": "webpack-dev-server",
-    "dev": "yarn run webpack-dev-server --env.mode development --hot --open --port 3000",
+    "dev": "yarn run webpack-dev-server --env.mode development --hot --open",
     "build": "yarn run webpack --env.mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

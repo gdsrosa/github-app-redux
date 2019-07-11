@@ -1,6 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const UserInfo = ({ photo, username, bio, location}) => {
+import { getUsername, getLocation, getBio, getUserPhoto } from '../ducks/User';
+
+const UserInfo = ({ photo, username, bio, location }) => {
   return (
     <div>
       {photo ? (
@@ -18,4 +21,14 @@ const UserInfo = ({ photo, username, bio, location}) => {
   );
 };
 
-export default UserInfo;
+const mapStateToProps = state => ({
+  username: getUsername(state),
+  photo: getUserPhoto(state),
+  bio: getBio(state),
+  location: getLocation(state),
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(UserInfo);

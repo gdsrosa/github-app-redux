@@ -1,25 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import {
-  handleFetchUserAsync,
-  getUsername,
-  getLocation,
-  getBio,
-  getUserPhoto,
-  getIfIsLoading,
-  getError,
-} from '../ducks/User';
+import { handleFetchUserAsync, getIfIsLoading, getError } from '../ducks/User';
 
-const User = ({
-  handleFetchUser,
-  username,
-  location,
-  bio,
-  photo,
-  isLoading,
-  error,
-}) => {
+const UserSearch = ({ handleFetchUser, isLoading, error }) => {
   if (isLoading) {
     return <div>Loading...</div>;
   } else if (error) {
@@ -31,7 +15,7 @@ const User = ({
   }
 
   return (
-    <div>
+    <div className="user-search">
       <form onSubmit={handleFetchUser}>
         <input
           name="username"
@@ -47,10 +31,6 @@ const User = ({
 };
 
 const mapStateToProps = state => ({
-  username: getUsername(state),
-  bio: getBio(state),
-  location: getLocation(state),
-  photo: getUserPhoto(state),
   isLoading: getIfIsLoading(state),
   error: getError(state),
 });
@@ -68,4 +48,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(User);
+)(UserSearch);

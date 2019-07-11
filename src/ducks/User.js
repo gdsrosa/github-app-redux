@@ -15,6 +15,7 @@ const initialState = {
   photo: null,
   isLoading: false,
   error: '',
+  displayData: false,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -29,6 +30,7 @@ export const reducer = (state = initialState, action) => {
         location: action.payload.location,
         photo: action.payload.photo,
         isLoading: false,
+        displayData: true,
       };
     case Types.FETCH_USER_FAILURE:
       return {
@@ -93,3 +95,4 @@ export const getBio = state => state.bio;
 export const getIfIsLoading = state => state.isLoading;
 export const getError = state => state.error;
 export const getUserPhoto = state => state.photo;
+export const getDisplayData = state => state.displayData;

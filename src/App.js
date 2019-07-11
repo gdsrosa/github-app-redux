@@ -1,11 +1,14 @@
 import React from 'react';
-import User from './components/User';
 
-const App = () => (
-  <div>
-    <h1>Github App User</h1>
-    <User />
-  </div>
-);
+import Main from './components/Main';
+import './styles/styles.scss';
+
+const App = () => {
+  return (
+    <div>
+      <Main />
+    </div>
+  );
+};
 
 export default App;
