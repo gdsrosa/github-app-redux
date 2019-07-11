@@ -23,7 +23,7 @@ module.exports = ({ mode }) => ({
       },
       {
         test: /\.scss$/,
-        use: ['sass-loader', 'css-loader', 'style-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|svg|jpe?g|gif)$/,
