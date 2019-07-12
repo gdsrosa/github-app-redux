@@ -8,8 +8,10 @@ import { getDisplayData } from 'ducks/User';
 const Main = ({ displayData }) => (
   <div>
     <h1>Github User Finder</h1>
-    <UserSearch />
-    {!displayData ? '' : <UserInfo />}
+    <div className="main">
+      <UserSearch />
+      {!displayData ? '' : <UserInfo />}
+    </div>
   </div>
 );
 
