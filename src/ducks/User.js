@@ -13,6 +13,7 @@ const initialState = {
   bio: '',
   location: '',
   photo: null,
+  name: '',
   isLoading: false,
   error: '',
   displayData: false,
@@ -29,6 +30,7 @@ export const reducer = (state = initialState, action) => {
         bio: action.payload.bio,
         location: action.payload.location,
         photo: action.payload.photo,
+        name: action.payload.name,
         isLoading: false,
         displayData: true,
       };
@@ -48,13 +50,20 @@ export const handleFetchUser = () => ({
   type: Types.FETCH_USER,
 });
 
-export const handleFetchUserSuccess = (username, location, photo, bio) => ({
+export const handleFetchUserSuccess = (
+  username,
+  location,
+  photo,
+  bio,
+  name
+) => ({
   type: Types.FETCH_USER_SUCCESS,
   payload: {
     username,
     location,
     photo,
     bio,
+    name,
   },
 });
 
@@ -77,7 +86,8 @@ export const handleFetchUserAsync = username => {
             data.login,
             data.location,
             data.avatar_url,
-            data.bio
+            data.bio,
+            data.name
           )
         );
       })
@@ -89,6 +99,7 @@ export const handleFetchUserAsync = username => {
 };
 
 // Selectors
+export const getName = state => state.name;
 export const getUsername = state => state.username;
 export const getLocation = state => state.location;
 export const getBio = state => state.bio;
