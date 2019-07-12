@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 import UserSearch from './UserSearch';
 import UserInfo from './UserInfo';
-import { getDisplayData } from '../ducks/User';
+import { getDisplayData } from 'ducks/User';
 
 const Main = ({ displayData }) => (
   <div>
-    <h1>Github App User</h1>
+    <h1>Github User Finder</h1>
     <UserSearch />
     {!displayData ? '' : <UserInfo />}
   </div>

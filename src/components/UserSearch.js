@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { handleFetchUserAsync, getIfIsLoading, getError } from '../ducks/User';
+import { handleFetchUserAsync, getIfIsLoading, getError } from 'ducks/User';
 
 const UserSearch = ({ handleFetchUser, isLoading, error }) => {
   if (isLoading) {
@@ -21,6 +21,7 @@ const UserSearch = ({ handleFetchUser, isLoading, error }) => {
   return (
     <div className="user-search">
       <form onSubmit={handleFetchUser}>
+        <p>Find a Github User trough his username</p>
         <input
           name="username"
           type="text"
@@ -28,7 +29,7 @@ const UserSearch = ({ handleFetchUser, isLoading, error }) => {
           className="user-search-input"
         />
         <button type="submit" className="user-search-button">
-          Fetch User
+          Find User!
         </button>
       </form>
     </div>

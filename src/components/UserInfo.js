@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getUsername, getLocation, getBio, getUserPhoto } from '../ducks/User';
+import { getUsername, getLocation, getBio, getUserPhoto } from 'ducks/User';
 
 const UserInfo = ({ photo, username, bio, location }) => {
   return (
-    <div>
+    <div className="user-info">
       {photo ? (
         <div>
           <p>Photo</p>
@@ -15,7 +15,7 @@ const UserInfo = ({ photo, username, bio, location }) => {
         ''
       )}
       <p>Username: {username}</p>
-      <p>Bio: {bio}</p>
+      <p>Bio: {bio ? bio : 'This user has no bio.'}</p>
       <p>Location: {location}</p>
     </div>
   );
