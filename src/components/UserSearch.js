@@ -5,7 +5,11 @@ import { handleFetchUserAsync, getIfIsLoading, getError } from '../ducks/User';
 
 const UserSearch = ({ handleFetchUser, isLoading, error }) => {
   if (isLoading) {
-    return <div className="user-search-loading">Loading...</div>;
+    return (
+      <div className="user-search-loading">
+        <p>Loading...</p>
+      </div>
+    );
   } else if (error) {
     return (
       <div className="user-search-error">
