@@ -38,4 +38,11 @@ module.exports = ({ mode }) => ({
     }),
     new webpack.ProgressPlugin(),
   ],
+  resolve: {
+    alias: {
+      components: path.resolve(__dirname, 'src/components'),
+      ducks: path.resolve(__dirname, 'src/ducks'),
+      styles: path.resolve(__dirname, 'src/styles'),
+    },
+  },
 });
