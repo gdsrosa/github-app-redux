@@ -1,22 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getUsername, getLocation, getBio, getUserPhoto } from 'ducks/User';
+import {
+  getUsername,
+  getLocation,
+  getBio,
+  getUserPhoto,
+  getName,
+} from 'ducks/User';
 
-const UserInfo = ({ photo, username, bio, location }) => {
+const UserInfo = ({ photo, username, bio, location, name }) => {
   return (
     <div className="user-info">
       {photo ? (
         <div>
           <p>Photo</p>
-          <img src={photo} style={{ width: 200, height: 200 }} />
+          <img className="user-info-img" src={photo} />
         </div>
       ) : (
         ''
       )}
-      <p>Username: {username}</p>
-      <p>Bio: {bio ? bio : 'This user has no bio.'}</p>
-      <p>Location: {location}</p>
+      <div className="user-info-child">
+        <p>Name: {name}</p>
+        <p>Username: {username}</p>
+        <p>Bio: {bio ? bio : 'This user has no bio.'}</p>
+        <p>Location: {location}</p>
+      </div>
     </div>
   );
 };
@@ -26,6 +35,7 @@ const mapStateToProps = state => ({
   photo: getUserPhoto(state),
   bio: getBio(state),
   location: getLocation(state),
+  name: getName(state),
 });
 
 export default connect(

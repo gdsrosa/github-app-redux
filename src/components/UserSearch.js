@@ -21,7 +21,6 @@ const UserSearch = ({ handleFetchUser, isLoading, error }) => {
   return (
     <div className="user-search">
       <form onSubmit={handleFetchUser}>
-        <p>Find a Github User trough his username</p>
         <input
           name="username"
           type="text"
