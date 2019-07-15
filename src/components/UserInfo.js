@@ -7,9 +7,10 @@ import {
   getBio,
   getUserPhoto,
   getName,
+  getPublicRepos,
 } from 'ducks/User';
 
-const UserInfo = ({ photo, username, bio, location, name }) => {
+const UserInfo = ({ photo, username, bio, location, name, publicRepos }) => {
   return (
     <div className="user-info">
       {photo ? (
@@ -23,8 +24,9 @@ const UserInfo = ({ photo, username, bio, location, name }) => {
       <div className="user-info-child">
         <p>Name: {name}</p>
         <p>Username: {username}</p>
-        <p>Bio: {bio ? bio : 'This user has no bio.'}</p>
+        {bio ? <p>Bio: {bio} </p> : 'This user has no bio'}
         <p>Location: {location}</p>
+        <p>Repos: {publicRepos}</p>
       </div>
     </div>
   );
@@ -36,6 +38,7 @@ const mapStateToProps = state => ({
   bio: getBio(state),
   location: getLocation(state),
   name: getName(state),
+  publicRepos: getPublicRepos(state),
 });
 
 export default connect(

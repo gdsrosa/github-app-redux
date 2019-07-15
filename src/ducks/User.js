@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 // Actions
 const Types = {
   FETCH_USER: 'user/FETCH_USER',
@@ -17,6 +15,7 @@ const initialState = {
   isLoading: false,
   error: '',
   displayData: false,
+  publicRepos: '',
 };
 
 export const reducer = (state = initialState, action) => {
@@ -33,6 +32,7 @@ export const reducer = (state = initialState, action) => {
         name: action.payload.name,
         isLoading: false,
         displayData: true,
+        publicRepos: action.payload.publicRepos,
       };
     case Types.FETCH_USER_FAILURE:
       return {
@@ -55,7 +55,8 @@ export const handleFetchUserSuccess = (
   location,
   photo,
   bio,
-  name
+  name,
+  publicRepos
 ) => ({
   type: Types.FETCH_USER_SUCCESS,
   payload: {
@@ -64,6 +65,7 @@ export const handleFetchUserSuccess = (
     photo,
     bio,
     name,
+    publicRepos,
   },
 });
 
@@ -77,24 +79,26 @@ export const handleFetchUserFailure = error => ({
 export const handleFetchUserAsync = username => {
   return dispatch => {
     dispatch(handleFetchUser());
-    axios
-      .get(`https://api.github.com/users/${username}`)
-      .then(res => {
-        const data = res.data;
-        dispatch(
-          handleFetchUserSuccess(
-            data.login,
-            data.location,
-            data.avatar_url,
-            data.bio,
-            data.name
-          )
-        );
-      })
-      .catch(err => {
-        console.error('Err', err);
-        dispatch(handleFetchUserFailure(err));
-      });
+    fetch(`https://api.github.com/users/${username}`).then(res => {
+      res
+        .json()
+        .then(data => {
+          dispatch(
+            handleFetchUserSuccess(
+              data.login,
+              data.location,
+              data.avatar_url,
+              data.bio,
+              data.name,
+              data.public_repos
+            )
+          );
+        })
+        .catch(err => {
+          console.error('Err', err);
+          dispatch(handleFetchUserFailure(err));
+        });
+    });
   };
 };
 
@@ -107,3 +111,4 @@ export const getIfIsLoading = state => state.isLoading;
 export const getError = state => state.error;
 export const getUserPhoto = state => state.photo;
 export const getDisplayData = state => state.displayData;
+export const getPublicRepos = state => state.publicRepos;
