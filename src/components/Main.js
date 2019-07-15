@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import UserSearch from './UserSearch';
 import UserInfo from './UserInfo';
+import Footer from './Footer';
 import { getDisplayData } from 'ducks/User';
 
 const Main = ({ displayData }) => (
@@ -11,6 +12,7 @@ const Main = ({ displayData }) => (
     <div className="main">
       <UserSearch />
       {!displayData ? '' : <UserInfo />}
+      <Footer />
     </div>
   </div>
 );

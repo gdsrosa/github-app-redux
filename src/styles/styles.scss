@@ -74,3 +74,15 @@ h1 {
   width: 200ṕx;
   border-radius: 50%;
 }
+
+.main-footer > p {
+  padding: 10px;
+  margin: 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $white;
+  color: $dark-grey;
+  text-align: center;
+}
