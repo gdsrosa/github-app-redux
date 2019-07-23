@@ -77,28 +77,34 @@ export const handleFetchUserFailure = error => ({
 });
 
 export const handleFetchUserAsync = username => {
-  return dispatch => {
+  // return dispatch => {
+  //   dispatch(handleFetchUser());
+  //   fetch(`https://api.github.com/users/${username}`).then(res => {
+  //     res
+  //       .json()
+  //       .then(data => {
+  //         dispatch(
+  //           handleFetchUserSuccess(
+  //             data.login,
+  //             data.location,
+  //             data.avatar_url,
+  //             data.bio,
+  //             data.name,
+  //             data.public_repos
+  //           )
+  //         );
+  //       })
+  //       .catch(err => {
+  //         console.error('Err', err);
+  //         dispatch(handleFetchUserFailure(err));
+  //       });
+  //   });
+  // };
+
+  return async dispatch => {
     dispatch(handleFetchUser());
-    fetch(`https://api.github.com/users/${username}`).then(res => {
-      res
-        .json()
-        .then(data => {
-          dispatch(
-            handleFetchUserSuccess(
-              data.login,
-              data.location,
-              data.avatar_url,
-              data.bio,
-              data.name,
-              data.public_repos
-            )
-          );
-        })
-        .catch(err => {
-          console.error('Err', err);
-          dispatch(handleFetchUserFailure(err));
-        });
-    });
+    const data = await fetch(`https://api.github.com/users/${username}`);
+    console.log(data);
   };
 };
 
