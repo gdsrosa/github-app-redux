@@ -79,21 +79,22 @@ export const handleFetchUserFailure = error => ({
 export const handleFetchUserAsync = username => {
   return async dispatch => {
     dispatch(handleFetchUser());
-
     try {
-      const reponse = await fetch(`https://api.github.com/users/${username}`);
+      const response = await fetch(`https://api.github.com/users/${username}`);
       const data = await response.json();
 
-      console.log(data);
-
       dispatch(
-        handleFetchUserSuccess(data.login, data.location),
-        data.avatar_url,
-        data.bio,
-        data.name,
-        data.public_repos
+        handleFetchUserSuccess(
+          data.login,
+          data.location,
+          data.avatar_url,
+          data.bio,
+          data.name,
+          data.public_repos
+        )
       );
     } catch (e) {
+      console.error('Err', e);
       dispatch(handleFetchUserFailure(e));
     }
   };
