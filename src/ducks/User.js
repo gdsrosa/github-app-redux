@@ -25,14 +25,9 @@ export const reducer = (state = initialState, action) => {
     case Types.FETCH_USER_SUCCESS:
       return {
         ...state,
-        username: action.payload.username,
-        bio: action.payload.bio,
-        location: action.payload.location,
-        photo: action.payload.photo,
-        name: action.payload.name,
+        ...action.payload,
         isLoading: false,
         displayData: true,
-        publicRepos: action.payload.publicRepos,
       };
     case Types.FETCH_USER_FAILURE:
       return {
