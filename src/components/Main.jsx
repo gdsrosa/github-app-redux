@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import UserSearch from './UserSearch';
 import UserInfo from './UserInfo';
 import Footer from './Footer';
-import { getDisplayData } from 'ducks/User';
+import { getDisplayData } from '../ducks/User';
 
 const Main = ({ displayData }) => (
   <div>
