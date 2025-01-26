@@ -1,0 +1,23 @@
+name: Auto Open PR to Main
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create Pull Request to Main
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: develop
+          base: main
+          title: 'Merge Develop into Main'
+          body: |
+            This PR is automatically created to merge the latest changes from `develop` into `main`.
