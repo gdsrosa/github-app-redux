@@ -1,4 +1,6 @@
-# Gitub App Redux
+# Gitub App Redux - Upgrade WIP 🚧
+
+⚠️ This project is now with a upgrade of packages in progress ⚠️
 
 This is a updated version of my v1 of [github-app](https://github.com/gdsrosa/github-app) repo.
 
