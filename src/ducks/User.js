@@ -64,15 +64,15 @@ export const handleFetchUserSuccess = (
   },
 });
 
-export const handleFetchUserFailure = error => ({
+export const handleFetchUserFailure = (error) => ({
   type: Types.FETCH_USER_FAILURE,
   payload: {
     error,
   },
 });
 
-export const handleFetchUserAsync = username => {
-  return async dispatch => {
+export const handleFetchUserAsync = (username) => {
+  return async (dispatch) => {
     dispatch(handleFetchUser());
     try {
       const response = await fetch(`https://api.github.com/users/${username}`);
@@ -96,12 +96,12 @@ export const handleFetchUserAsync = username => {
 };
 
 // Selectors
-export const getName = state => state.name;
-export const getUsername = state => state.username;
-export const getLocation = state => state.location;
-export const getBio = state => state.bio;
-export const getIfIsLoading = state => state.isLoading;
-export const getError = state => state.error;
-export const getUserPhoto = state => state.photo;
-export const getDisplayData = state => state.displayData;
-export const getPublicRepos = state => state.publicRepos;
+export const getName = (state) => state.name;
+export const getUsername = (state) => state.username;
+export const getLocation = (state) => state.location;
+export const getBio = (state) => state.bio;
+export const getIfIsLoading = (state) => state.isLoading;
+export const getError = (state) => state.error;
+export const getUserPhoto = (state) => state.photo;
+export const getDisplayData = (state) => state.displayData;
+export const getPublicRepos = (state) => state.publicRepos;

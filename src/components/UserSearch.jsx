@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { handleFetchUserAsync, getIfIsLoading, getError } from 'ducks/User';
+import { handleFetchUserAsync, getIfIsLoading, getError } from '../ducks/User';
 
 const UserSearch = ({ handleFetchUser, isLoading, error }) => {
   if (isLoading) {

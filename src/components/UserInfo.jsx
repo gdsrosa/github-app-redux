@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import {
@@ -8,9 +8,15 @@ import {
   getUserPhoto,
   getName,
   getPublicRepos,
-} from 'ducks/User';
+} from '../ducks/User';
 
 const UserInfo = ({ photo, username, bio, location, name, publicRepos }) => {
+  const props = { photo, username, bio, location, name, publicRepos };
+
+  useEffect(() => {
+    console.log('User Info mounted', props);
+  }, []);
+
   return (
     <div className="user-info">
       {photo ? (
