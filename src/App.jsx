@@ -1,14 +1,8 @@
 import React from 'react';
 
-import Main from './components/Main';
-import './styles/styles.scss';
+import Main from '@/components/Main';
+import '@/styles/styles.scss';
 
-const App = () => {
-  return (
-    <div>
-      <Main />
-    </div>
-  );
-};
+const App = () => <Main />;
 
 export default App;

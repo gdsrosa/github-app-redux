@@ -1,31 +1,44 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import { useContext } from 'react';
+import { useFetchUser } from '@/hooks/useFetchUser';
+import { UserContext } from '@/context/UserContext';
 
-import { handleFetchUserAsync, getIfIsLoading, getError } from '../ducks/User';
+const UserSearch = () => {
+  const { username, setUsername } = useContext(UserContext);
+  const { isLoading, error } = useFetchUser(username);
 
-const UserSearch = ({ handleFetchUser, isLoading, error }) => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const username = formData.get('username');
+    setUsername(username);
+  };
+
   if (isLoading) {
     return (
       <div className="user-search-loading">
         <p>Loading...</p>
       </div>
     );
-  } else if (error) {
+  }
+
+  if (error) {
     return (
       <div className="user-search-error">
-        <p>Oops, usuário não encontrado.</p>
+        <p>{error.message}</p>
       </div>
     );
   }
 
   return (
     <div className="user-search">
-      <form onSubmit={handleFetchUser}>
+      <form onSubmit={handleSubmit}>
         <input
+          id="username"
           name="username"
           type="text"
           placeholder="Type a Github username..."
           className="user-search-input"
+          autoComplete="on"
         />
         <button type="submit" className="user-search-button">
           Find User!
@@ -35,22 +48,4 @@ const UserSearch = ({ handleFetchUser, isLoading, error }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  isLoading: getIfIsLoading(state),
-  error: getError(state),
-});
-
-const mapDispatchToProps = dispatch => {
-  return {
-    handleFetchUser: e => {
-      e.preventDefault();
-      dispatch(handleFetchUserAsync(e.target.username.value));
-      e.target.username.value = '';
-    },
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UserSearch);
+export default UserSearch;

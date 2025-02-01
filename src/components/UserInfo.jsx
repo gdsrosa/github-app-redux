@@ -1,31 +1,20 @@
-import { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useContext } from 'react';
 
-import {
-  getUsername,
-  getLocation,
-  getBio,
-  getUserPhoto,
-  getName,
-  getPublicRepos,
-} from '../ducks/User';
+import { useFetchUser } from '@/hooks/useFetchUser';
+import { UserContext } from '@/context/UserContext';
 
-const UserInfo = ({ photo, username, bio, location, name, publicRepos }) => {
-  const props = { photo, username, bio, location, name, publicRepos };
+const UserInfo = () => {
+  const { username } = useContext(UserContext);
+  const { data } = useFetchUser(username);
 
-  useEffect(() => {
-    console.log('User Info mounted', props);
-  }, []);
+  const { photo, bio, location, name, publicRepos } = data;
 
   return (
     <div className="user-info">
-      {photo ? (
+      {photo && (
         <div>
-          <p>Photo</p>
           <img className="user-info-img" src={photo} />
         </div>
-      ) : (
-        ''
       )}
       <div className="user-info-child">
         <p>Name: {name}</p>
@@ -38,16 +27,4 @@ const UserInfo = ({ photo, username, bio, location, name, publicRepos }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  username: getUsername(state),
-  photo: getUserPhoto(state),
-  bio: getBio(state),
-  location: getLocation(state),
-  name: getName(state),
-  publicRepos: getPublicRepos(state),
-});
-
-export default connect(
-  mapStateToProps,
-  null
-)(UserInfo);
+export default UserInfo;
