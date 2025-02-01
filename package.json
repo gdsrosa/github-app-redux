@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Simple React app using GitHub API",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
     "dev": "vite serve",
     "build": "vite build",
@@ -11,12 +11,12 @@
   },
   "keywords": [
     "react",
-    "redux",
     "vite"
   ],
   "author": "Gabriel Rosa",
   "devDependencies": {
-    "eslint": "^9.19.0",
+    "@tanstack/eslint-plugin-query": "^5.65.0",
+    "eslint": "^8.57.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
@@ -27,11 +27,9 @@
     "vite": "^6.0.11"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.65.0",
     "@vitejs/plugin-react": "^4.3.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-redux": "^9.2.0",
-    "redux": "^5.0.1",
-    "redux-thunk": "^3.1.0"
+    "react-dom": "^19.0.0"
   }
 }
