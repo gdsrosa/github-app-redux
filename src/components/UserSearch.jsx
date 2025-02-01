@@ -1,4 +1,7 @@
 import { useContext } from 'react';
+
+import { Button, TextField, Typography } from '@mui/material';
+
 import { useFetchUser } from '@/hooks/useFetchUser';
 import { UserContext } from '@/context/UserContext';
 
@@ -15,34 +18,32 @@ const UserSearch = () => {
 
   if (isLoading) {
     return (
-      <div className="user-search-loading">
-        <p>Loading...</p>
+      <div>
+        <Typography variant="p">Loading...</Typography>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="user-search-error">
-        <p>{error.message}</p>
+      <div>
+        <Typography variant="p">{error.message}</Typography>
       </div>
     );
   }
 
   return (
-    <div className="user-search">
+    <div>
       <form onSubmit={handleSubmit}>
-        <input
+        <TextField
           id="username"
           name="username"
-          type="text"
-          placeholder="Type a Github username..."
-          className="user-search-input"
-          autoComplete="on"
+          label="Username"
+          variant="outlined"
         />
-        <button type="submit" className="user-search-button">
+        <Button type="submit" variant="contained">
           Find User!
-        </button>
+        </Button>
       </form>
     </div>
   );
