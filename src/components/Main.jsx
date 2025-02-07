@@ -1,27 +1,21 @@
-import { useState } from 'react';
-
+import { useContext } from 'react';
+import { Box, Container, Typography } from '@mui/material';
+import { UserContext } from '@/context/UserContext';
 import UserSearch from './UserSearch';
 import UserInfo from './UserInfo';
-import Footer from './Footer';
-import { UserContext } from '@/context/UserContext';
-import { Box, Container, Typography } from '@mui/material';
 
 const Main = () => {
-  const [username, setUsername] = useState('');
-
+  const { username } = useContext(UserContext);
   return (
-    <UserContext.Provider value={{ username, setUsername }}>
-      <Container maxWidth="sm">
-        <Typography variant="h3" gutterBottom>
-          Github User Finder
-        </Typography>
-        <Box>
-          <UserSearch />
-          {username && <UserInfo />}
-          <Footer />
-        </Box>
-      </Container>
-    </UserContext.Provider>
+    <Container maxWidth="sm">
+      <Typography variant="h3" gutterBottom sx={{ marginY: 2 }}>
+        Github User Finder
+      </Typography>
+      <Box>
+        <UserSearch />
+        {username && <UserInfo />}
+      </Box>
+    </Container>
   );
 };
 

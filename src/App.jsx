@@ -1,11 +1,21 @@
-import React from 'react';
-
+import { useState } from 'react';
+import { CssBaseline } from '@mui/material';
 import Main from '@/components/Main';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import Footer from '@/components/Footer';
+import { UserContext } from '@/context/UserContext';
 
-const App = () => <Main />;
+const App = () => {
+  const [username, setUsername] = useState('');
+
+  return (
+    <UserContext.Provider value={{ username, setUsername }}>
+      <>
+        <CssBaseline />
+        <Main />
+        <Footer />
+      </>
+    </UserContext.Provider>
+  );
+};
 
 export default App;

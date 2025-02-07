@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 
-import { Button, TextField, Typography } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
 
 import { useFetchUser } from '@/hooks/useFetchUser';
 import { UserContext } from '@/context/UserContext';
 
 const UserSearch = () => {
   const { username, setUsername } = useContext(UserContext);
-  const { isLoading, error } = useFetchUser(username);
+  const { error } = useFetchUser(username);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,14 +15,6 @@ const UserSearch = () => {
     const username = formData.get('username');
     setUsername(username);
   };
-
-  if (isLoading) {
-    return (
-      <div>
-        <Typography variant="p">Loading...</Typography>
-      </div>
-    );
-  }
 
   if (error) {
     return (
@@ -34,17 +26,18 @@ const UserSearch = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <Box component="form" onSubmit={handleSubmit} marginBottom={2}>
         <TextField
           id="username"
           name="username"
           label="Username"
           variant="outlined"
+          fullWidth
         />
-        <Button type="submit" variant="contained">
+        <Button type="submit" variant="contained" fullWidth sx={{ marginY: 1 }}>
           Find User!
         </Button>
-      </form>
+      </Box>
     </div>
   );
 };
