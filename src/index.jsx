@@ -4,11 +4,16 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import App from './App.jsx';
 
+import { ThemeProvider } from '@mui/material';
+import theme from './styles/theme.js';
+
 const root = createRoot(document.getElementById('root'));
 const queryClient = new QueryClient();
 
 root.render(
   <QueryClientProvider client={queryClient}>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </QueryClientProvider>
 );

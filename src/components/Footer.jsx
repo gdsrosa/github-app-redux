@@ -1,11 +1,28 @@
+import { styled } from '@mui/material';
 import React from 'react';
+
+const StyledFooter = styled('footer')(({ theme }) => ({
+  ...theme.typography.body2,
+  position: 'fixed',
+  bottom: 0,
+  left: 0,
+  backgroundColor: theme.palette.primary.main,
+  width: '100%',
+  margin: 0,
+  padding: 4,
+  color: theme.typography.color.secondary,
+  fontWeight: 'bold',
+}));
 
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <footer className="main-footer">
-      <p>&copy; {year} | Application developed by Gabriel Rosa</p>
-    </footer>
+    <StyledFooter>
+      <p>
+        &copy; {year} | Application developed by Gabriel Rosa for learning
+        purpose.
+      </p>
+    </StyledFooter>
   );
 };
 
