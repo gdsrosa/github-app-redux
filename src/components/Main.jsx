@@ -1,24 +1,43 @@
-import { useState } from 'react';
-
+import { useContext } from 'react';
+import {
+  Box,
+  Container,
+  FormControlLabel,
+  FormGroup,
+  Switch,
+  Typography,
+  useColorScheme,
+} from '@mui/material';
+import { UserContext } from '@/context/UserContext';
 import UserSearch from './UserSearch';
 import UserInfo from './UserInfo';
-import Footer from './Footer';
-import { UserContext } from '@/context/UserContext';
 
 const Main = () => {
-  const [username, setUsername] = useState('');
+  const { username } = useContext(UserContext);
+  const { mode, setMode } = useColorScheme();
+
+  const handleChange = (event) => {
+    const { checked } = event.target;
+    const theme = checked && mode !== 'dark' ? 'dark' : 'light';
+    setMode(theme);
+  };
 
   return (
-    <UserContext.Provider value={{ username, setUsername }}>
-      <div>
-        <h1>Github User Finder</h1>
-        <div className="main">
-          <UserSearch />
-          {username && <UserInfo />}
-          <Footer />
-        </div>
-      </div>
-    </UserContext.Provider>
+    <Container maxWidth="sm">
+      <FormGroup>
+        <FormControlLabel
+          control={<Switch name="theme" onChange={handleChange} />}
+          label={mode && `Theme ${mode}`}
+        />
+      </FormGroup>
+      <Typography variant="h3" gutterBottom sx={{ marginY: 2 }}>
+        Github User Finder
+      </Typography>
+      <Box>
+        <UserSearch />
+        {username && <UserInfo />}
+      </Box>
+    </Container>
   );
 };
 

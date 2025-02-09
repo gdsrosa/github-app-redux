@@ -1,10 +1,13 @@
 import { useContext } from 'react';
+
+import { Box, Button, TextField, Typography } from '@mui/material';
+
 import { useFetchUser } from '@/hooks/useFetchUser';
 import { UserContext } from '@/context/UserContext';
 
 const UserSearch = () => {
   const { username, setUsername } = useContext(UserContext);
-  const { isLoading, error } = useFetchUser(username);
+  const { error } = useFetchUser(username);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,37 +16,28 @@ const UserSearch = () => {
     setUsername(username);
   };
 
-  if (isLoading) {
-    return (
-      <div className="user-search-loading">
-        <p>Loading...</p>
-      </div>
-    );
-  }
-
   if (error) {
     return (
-      <div className="user-search-error">
-        <p>{error.message}</p>
+      <div>
+        <Typography variant="p">{error.message}</Typography>
       </div>
     );
   }
 
   return (
-    <div className="user-search">
-      <form onSubmit={handleSubmit}>
-        <input
+    <div>
+      <Box component="form" onSubmit={handleSubmit} marginBottom={2}>
+        <TextField
           id="username"
           name="username"
-          type="text"
-          placeholder="Type a Github username..."
-          className="user-search-input"
-          autoComplete="on"
+          label="Username"
+          variant="outlined"
+          fullWidth
         />
-        <button type="submit" className="user-search-button">
+        <Button type="submit" variant="contained" fullWidth sx={{ marginY: 1 }}>
           Find User!
-        </button>
-      </form>
+        </Button>
+      </Box>
     </div>
   );
 };
