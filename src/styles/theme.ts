@@ -1,5 +1,5 @@
-import { createTheme } from '@mui/material/styles';
 import { blue, red } from '@mui/material/colors';
+import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   colorSchemes: {
@@ -7,12 +7,12 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: 'Roboto',
-    color: {
+  },
+  palette: {
+    text: {
       primary: '#000',
       secondary: '#fff',
     },
-  },
-  palette: {
     primary: {
       main: blue[600],
     },

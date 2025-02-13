@@ -3,19 +3,24 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Simple React app using GitHub API",
-  "main": "index.jsx",
+  "main": "main.tsx",
   "scripts": {
     "dev": "vite serve",
-    "build": "vite build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && vite build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [
     "react",
-    "vite"
+    "vite",
+    "typescript"
   ],
   "author": "Gabriel Rosa",
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.65.0",
+    "@types/node": "^22.13.2",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
     "eslint": "^8.57.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^10.0.1",
@@ -24,6 +29,7 @@
     "eslint-plugin-react": "^7.37.4",
     "prettier": "3.4.2",
     "sass-embedded": "^1.83.4",
+    "typescript": "^5.7.3",
     "vite": "^6.0.11"
   },
   "dependencies": {
