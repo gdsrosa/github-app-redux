@@ -18,7 +18,7 @@ const Main = () => {
 
   const handleChange = (event) => {
     const { checked } = event.target;
-    const theme = checked && mode !== 'dark' ? 'dark' : 'light';
+    const theme = checked ? 'dark' : 'light';
     setMode(theme);
   };
 
