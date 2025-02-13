@@ -9,10 +9,6 @@ const theme = createTheme({
     fontFamily: 'Roboto',
   },
   palette: {
-    text: {
-      primary: '#000',
-      secondary: '#fff',
-    },
     primary: {
       main: blue[600],
     },

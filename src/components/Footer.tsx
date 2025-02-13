@@ -9,7 +9,7 @@ const StyledFooter = styled('footer')(({ theme }) => ({
   width: '100%',
   margin: 0,
   padding: 4,
-  color: theme.palette.text.secondary,
+  color: 'white',
   fontWeight: 'bold',
   display: 'flex',
   justifyContent: 'center',
