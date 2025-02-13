@@ -1,5 +1,4 @@
 import { styled } from '@mui/material';
-import React from 'react';
 
 const StyledFooter = styled('footer')(({ theme }) => ({
   ...theme.typography.body2,
@@ -10,7 +9,7 @@ const StyledFooter = styled('footer')(({ theme }) => ({
   width: '100%',
   margin: 0,
   padding: 4,
-  color: theme.typography.color.secondary,
+  color: theme.palette.text.secondary,
   fontWeight: 'bold',
   display: 'flex',
   justifyContent: 'center',

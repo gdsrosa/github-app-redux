@@ -1,25 +1,25 @@
-import { useContext } from 'react';
+import { FormEvent, useContext } from 'react';
 
 import { Box, Button, TextField, Typography } from '@mui/material';
 
-import { useFetchUser } from '@/hooks/useFetchUser';
 import { UserContext } from '@/context/UserContext';
+import { useFetchUser } from '@/hooks/useFetchUser';
 
 const UserSearch = () => {
   const { username, setUsername } = useContext(UserContext);
   const { error } = useFetchUser(username);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const username = formData.get('username');
+    const formData = new FormData(event.currentTarget);
+    const username = formData.get('username') as string;
     setUsername(username);
   };
 
   if (error) {
     return (
       <div>
-        <Typography variant="p">{error.message}</Typography>
+        <Typography variant="body1">{error.message}</Typography>
       </div>
     );
   }

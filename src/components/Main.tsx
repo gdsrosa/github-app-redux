@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { UserContext } from '@/context/UserContext';
 import {
   Box,
   Container,
@@ -8,17 +8,16 @@ import {
   Typography,
   useColorScheme,
 } from '@mui/material';
-import { UserContext } from '@/context/UserContext';
-import UserSearch from './UserSearch';
+import { ChangeEvent, useContext } from 'react';
 import UserInfo from './UserInfo';
+import UserSearch from './UserSearch';
 
 const Main = () => {
   const { username } = useContext(UserContext);
   const { mode, setMode } = useColorScheme();
 
-  const handleChange = (event) => {
-    const { checked } = event.target;
-    const theme = checked ? 'dark' : 'light';
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const theme = event.target.checked ? 'dark' : 'light';
     setMode(theme);
   };
 
