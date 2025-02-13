@@ -12,6 +12,8 @@ const StyledFooter = styled('footer')(({ theme }) => ({
   padding: 4,
   color: theme.typography.color.secondary,
   fontWeight: 'bold',
+  display: 'flex',
+  justifyContent: 'center',
 }));
 
 const Footer = () => {
