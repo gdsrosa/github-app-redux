@@ -9,11 +9,9 @@ const App = () => {
 
   return (
     <UserContext.Provider value={{ username, setUsername }}>
-      <>
-        <CssBaseline />
-        <Main />
-        <Footer />
-      </>
+      <CssBaseline />
+      <Main />
+      <Footer />
     </UserContext.Provider>
   );
 };
