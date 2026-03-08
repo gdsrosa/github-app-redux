@@ -1,5 +1,5 @@
 import { fetchUser } from '@/api/fetchUser';
-import { parseUserInfo } from '@/helpers';
+import { parseUserInfo } from './utils';
 import { useQuery } from '@tanstack/react-query';
 
 export const useFetchUser = (username: string) => {

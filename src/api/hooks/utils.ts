@@ -8,7 +8,7 @@ type UserInfo = {
 };
 
 export const parseUserInfo = (data: UserInfo) => {
-  if (!data) return {};
+  if (!data) return null;
 
   return {
     photo: data.avatar_url,

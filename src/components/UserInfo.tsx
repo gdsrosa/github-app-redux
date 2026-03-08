@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { useFetchUser } from '@/hooks/useFetchUser';
+import { useFetchUser } from '@/api/hooks/useFetchUser';
 import { UserContext } from '@/context/UserContext';
 import {
   Box,
@@ -20,6 +20,8 @@ const Paragraph = styled('p')(({ theme }) => ({
 const UserInfo = () => {
   const { username } = useContext(UserContext);
   const { data, isLoading } = useFetchUser(username);
+
+  if (!data) return null;
 
   const { photo, bio, location, name, publicRepos } = data;
 
