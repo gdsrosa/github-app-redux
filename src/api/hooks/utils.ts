@@ -1,4 +1,3 @@
-<<<<<<<< HEAD:src/helpers.ts
 type UserInfo = {
   avatar_url: string;
   bio: string;
@@ -9,11 +8,7 @@ type UserInfo = {
 };
 
 export const parseUserInfo = (data: UserInfo) => {
-  if (!data) return {};
-========
-export const transformUserData = (data) => {
   if (!data) return null;
->>>>>>>> 0ad717f (feat: update import from api):src/api/hooks/utils.js
 
   return {
     photo: data.avatar_url,

@@ -3,7 +3,7 @@ import { FormEvent, useContext } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
 
 import { UserContext } from '@/context/UserContext';
-import { useFetchUser } from '@/hooks/useFetchUser';
+import { useFetchUser } from '@/api/hooks/useFetchUser';
 
 const UserSearch = () => {
   const { username, setUsername } = useContext(UserContext);
